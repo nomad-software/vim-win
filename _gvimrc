@@ -1,0 +1,31 @@
+"==========================================================================
+" EDITOR PREFERENCES
+"==========================================================================
+
+	winpos 285 40															"Set the position of the window at startup.
+	set guifont=DeJaVu_Sans_Mono:h10										"Set the editor font.
+
+	colorscheme freya														"Set color scheme to freya.
+	set guicursor=a:blinkon0												"Turn off cursor flashing for all modes.
+	set cursorline															"Highlight current line.
+
+	set lines=65															"Set the initial height of the editor.
+	set columns=169															"Set the initial width of the editor.
+
+	set noerrorbells														"Don't make noise.
+	set novisualbell														"Don't blink.
+
+	set guioptions-=m														"Remove menu bar.
+	set guioptions-=T														"Remove toolbar.
+	set guioptions-=r														"Remove right-hand scroll bar.
+	set guioptions-=L														"Remove left-hand scroll bar.
+	set guioptions-=g														"Remove grey menus.
+	set guioptions-=t														"Remove tear-off menus.
+	set guioptions-=a														"Remove autoselection.
+
+"==========================================================================
+" AFTER
+"==========================================================================
+
+	source $VIMRUNTIME/bundle/snipmate/after/plugin/snipMate.vim			"Load after other plugins. Pathogen doesn't load scripts in the 'after' dir.
+
