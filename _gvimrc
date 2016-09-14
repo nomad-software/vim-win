@@ -4,6 +4,7 @@
 
 	winpos 285 40															"Set the position of the window at startup.
 	set guifont=DeJaVu_Sans_Mono:h10										"Set the editor font.
+	set rop=type:directx,geom:1,taamode:1									"Set text rendering mode.
 
 	colorscheme freya														"Set color scheme to freya.
 	set guicursor=a:blinkon0												"Turn off cursor flashing for all modes.
