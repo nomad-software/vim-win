@@ -1,9 +1,9 @@
 " zipPlugin.vim: Handles browsing zipfiles
 "            PLUGIN PORTION
-" Date:			Aug 15, 2011
-" Maintainer:	Charles E Campbell, Jr <NdrOchip@ScampbellPfamily.AbizM-NOSPAM>
+" Date:			Sep 13, 2016
+" Maintainer:	Charles E Campbell <NdrOchip@ScampbellPfamily.AbizM-NOSPAM>
 " License:		Vim License  (see vim's :help license)
-" Copyright:    Copyright (C) 2005-2011 Charles E. Campbell, Jr. {{{1
+" Copyright:    Copyright (C) 2005-2016 Charles E. Campbell {{{1
 "               Permission is hereby granted to use and distribute this code,
 "               with or without modifications, provided that this copyright
 "               notice is copied with it. Like anything else that's free,
@@ -20,9 +20,15 @@
 if &cp || exists("g:loaded_zipPlugin")
  finish
 endif
-let g:loaded_zipPlugin = "v25"
+let g:loaded_zipPlugin = "v28"
 let s:keepcpo          = &cpo
 set cpo&vim
+
+" ---------------------------------------------------------------------
+" Options: {{{1
+if !exists("g:zipPlugin_ext")
+ let g:zipPlugin_ext='*.apk,*.celzip,*.crtx,*.docm,*.docx,*.dotm,*.dotx,*.ear,*.epub,*.gcsx,*.glox,*.gqsx,*.ja,*.jar,*.kmz,*.oxt,*.potm,*.potx,*.ppam,*.ppsm,*.ppsx,*.pptm,*.pptx,*.sldx,*.thmx,*.vdw,*.war,*.wsz,*.xap,*.xlam,*.xlam,*.xlsb,*.xlsm,*.xlsx,*.xltm,*.xltx,*.xpi,*.zip'
+endif
 
 " ---------------------------------------------------------------------
 " Public Interface: {{{1
@@ -40,7 +46,7 @@ augroup zip
   au FileWriteCmd zipfile:*/*	call zip#Write(expand("<amatch>"))
  endif
 
- au BufReadCmd   *.zip,*.jar,*.xpi,*.war,*.ear,*.celzip,*.oxt		call zip#Browse(expand("<amatch>"))
+ exe "au BufReadCmd ".g:zipPlugin_ext.' call zip#Browse(expand("<amatch>"))'
 augroup END
 
 " ---------------------------------------------------------------------

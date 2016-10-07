@@ -1,4 +1,4 @@
-*gui_w32.txt*   For Vim version 7.3.  Last change: 2012 Aug 04
+*gui_w32.txt*   For Vim version 8.0.  Last change: 2014 Dec 20
 
 
 		  VIM REFERENCE MANUAL    by Bram Moolenaar
@@ -17,7 +17,7 @@ Vim's Win32 Graphical User Interface			*gui-w32* *win32-gui*
 
 Other relevant documentation:
 |gui.txt|	For generic items of the GUI.
-|os_win32.txt|  For Win32 specific items.
+|os_win32.txt| 	For Win32 specific items.
 
 {Vi does not have a Windows GUI}
 
@@ -452,9 +452,10 @@ detailed elsewhere: see |'mouse'|, |win32-hidden-menus|.
 You can drag and drop one or more files into the Vim window, where they will
 be opened as normal.  See |drag-n-drop|.
 
-							*:simalt* *:si*
+							*:simalt* *:sim*
 :sim[alt] {key}		simulate pressing {key} while holding Alt pressed.
 			{not in Vi} {only for Win32 versions}
+			Note: ":si" means ":s" with the "i" flag.
 
 Normally, Vim takes control of all Alt-<Key> combinations, to increase the
 number of possible mappings.  This clashes with the standard use of Alt as the

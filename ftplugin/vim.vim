@@ -1,7 +1,7 @@
 " Vim filetype plugin
 " Language:	Vim
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last Change:	2012 Mar 21
+" Last Change:	2014 Sep 07
 
 " Only do this when not done yet for this buffer
 if exists("b:did_ftplugin")
@@ -20,10 +20,6 @@ let b:undo_ftplugin = "setl fo< isk< com< tw< commentstring<"
 " Set 'formatoptions' to break comment lines but not other lines,
 " and insert the comment leader when hitting <CR> or using "o".
 setlocal fo-=t fo+=croql
-
-" To make syntax highlighting of 'vimVar's work correctly we need the colon to
-" be part of keywords. This needs to be done prior to the 'isk+=#' below.
-setlocal isk+=:
 
 " To allow tag lookup via CTRL-] for autoload functions, '#' must be a
 " keyword character.  E.g., for netrw#Nread().
@@ -66,9 +62,12 @@ if exists("loaded_matchit")
 	\ '\<try\>:\<cat\%[ch]\>:\<fina\%[lly]\>:\<endt\%[ry]\>,' .
 	\ '\<aug\%[roup]\s\+\%(END\>\)\@!\S:\<aug\%[roup]\s\+END\>,' .
 	\ '(:)'
-  " Ignore ":syntax region" commands, the 'end' argument clobbers if-endif
-  let b:match_skip = 'getline(".") =~ "^\\s*sy\\%[ntax]\\s\\+region" ||
-	\ synIDattr(synID(line("."),col("."),1),"name") =~? "comment\\|string"'
+  " Ignore syntax region commands and settings, any 'en*' would clobber
+  " if-endif.
+  " - set spl=de,en
+  " - au! FileType javascript syntax region foldBraces start=/{/ end=/}/ …
+  let b:match_skip = 'synIDattr(synID(line("."),col("."),1),"name")
+        \ =~? "comment\\|string\\|vimSynReg\\|vimSet"'
 endif
 
 let &cpo = s:cpo_save
